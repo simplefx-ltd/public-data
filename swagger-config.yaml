@@ -1,0 +1,247 @@
+openapi: 3.0.0
+info:
+  description: Publicly avaialble current and historical market data from simplefx.com.
+    For detailed information, click on the endpoint, scroll to example response, select schema view and expand the reslut field.
+  version: 1.0.5
+  title: Simplefx public data
+  termsOfService: https://simplefx.com/terms-and-conditions/
+  contact:
+    email: support@simplefx.com
+  license:
+    name: License
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+tags:
+  - name: market_data
+    description: publicly avaialble data
+    externalDocs:
+      description: Find out more
+      url: https://simplefx.com/features/
+paths:
+  /market_data/contracts:
+    get:
+      tags:
+        - market_data
+      summary: Summary of the available contracts
+      description: ""
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ContractsResponse"
+  /market_data/contract_specs:
+    get:
+      tags:
+        - market_data
+      summary: Specifications for contracts
+      description: ""
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ContractsSpecsResponse"
+  /market_data/orderbook:
+    get:
+      tags:
+        - market_data
+      summary: top of order book for all instruments
+      description: ""
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OrderbookIndexResponse"
+  "/market_data/orderbook/{ticker_id}":
+    get:
+      tags:
+        - market_data
+      summary: Orderbook for single instrument
+      description: ""
+      parameters:
+        - name: ticker_id
+          in: path
+          description: ""
+          examples:
+            BTC-USD:
+              value: BTC-USD
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ContractsResponse"
+externalDocs:
+  description: Find out more about Simplefx
+  url: https://simplefx.com/features/
+servers:
+  - url: /api
+    description: local sandbox data
+  - url: https://rest.simplefx.com/api
+    description: production public data
+components:
+  schemas:
+    ContractsResponse:
+      type: object
+      properties:
+        time:
+          type: integer
+          format: int32
+          description: unix timestamp of generated data (seconds since 1970)
+        success:
+          type: boolean
+        result:
+          type: array
+          items:
+            type: object
+            properties:
+              ticker_id:
+                type: string
+                example: BTC-USD
+                description: instrument ticker in form base_currency-price_currency
+              symbol:
+                type: string
+                example: BTCUSD
+                description: internal instrument symbol
+              base_currency:
+                type: string
+                example: BTC
+                description: currency for the contract size - volume
+              target_currency:
+                type: string
+                example: USD
+                description: currency in which contract is priced
+              last_price:
+                type: number
+                example: 28999.93
+                description: last execution price
+              base_volume:
+                type: number
+                description: volume traded in last 24 hours decribed in base currency,
+                  updates every minute
+              target_volume:
+                type: number
+                description: volume traded in last 24 hours decribed in pricing currency,
+                  updates every minute
+              bid:
+                type: number
+                example: 28999.93
+                description: top of orderbook bid price (currenct)
+              ask:
+                type: number
+                example: 29190.2
+                description: top of orderbook offer price (currenct)
+              high:
+                type: number
+                example: 29190.2
+                description: highest execution price within last 24 hours
+              low:
+                type: number
+                example: 28999.93
+                description: lowest execution price within last 24 hours
+              product_type:
+                type: string
+                example: Perpetual
+              open_interest:
+                type: number
+                description: open interest in base currency for last 24 hours
+              funding_rate:
+                type: number
+                example: -1701.9384
+                description: current funding rate
+              next_funding_rate_timestamp:
+                type: number
+                example: 1653695940
+                description: unix timestamp in seconds, when the next funding will be
+                  calculated
+    ContractsSpecsResponse:
+      type: object
+      properties:
+        time:
+          type: integer
+          format: int32
+          description: unix timestamp of generated data (seconds since 1970)
+        success:
+          type: boolean
+        result:
+          type: array
+          items:
+            type: object
+            properties:
+              ticker_id:
+                type: string
+                example: BTC-USD
+                description: instrument ticker in form -
+              symbol:
+                type: string
+                example: BTCUSD
+                description: internal instrument symbol
+              contract_type:
+                type: string
+                example: Quanto
+                description: Qunato - the earnings are converted to account deposit currency
+              contract_price:
+                type: number
+                example: 10
+                description: contract price in base currency, aka contract size
+              contract_price_currency:
+                type: string
+                example: BTC
+                description: contract in wihch contract_price is descibed, base currency
+    OrderbookRows:
+      type: array
+      description: each row contains price and avaialble volume
+      items:
+        type: array
+        items:
+          type: number
+    Orderbook:
+      type: object
+      properties:
+        bids:
+          $ref: "#/components/schemas/OrderbookRows"
+        asks:
+          $ref: "#/components/schemas/OrderbookRows"
+    OrderbookIndexResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        result:
+          type: object
+          items:
+            type: object
+            additionalProperties:
+              $ref: "#/components/schemas/Orderbook"
+          example:
+            BTC-USD:
+              bids:
+                - - 28857.36
+                  - 10
+              asks:
+                - - 29047.93
+                  - 10
+            DASH-USD:
+              bids:
+                - - 57.15
+                  - 10
+              asks:
+                - - 59.35
+                  - 10
+    OrderbookResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        result:
+          type: object
+          items:
+            $ref: "#/components/schemas/Orderbook"

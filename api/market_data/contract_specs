@@ -1,0 +1,131 @@
+{
+  "success": true,
+  "result": [
+    {
+      "ticker_id": "ADA-USD",
+      "symbol": "ADAUSD",
+      "contract_type": "Quanto",
+      "contract_price": 10000.0,
+      "contract_price_currency": "ADA"
+    },
+    {
+      "ticker_id": "EOS-USD",
+      "symbol": "EOSUSD",
+      "contract_type": "Quanto",
+      "contract_price": 1000.0,
+      "contract_price_currency": "EOS"
+    },
+    {
+      "ticker_id": "ETC-USD",
+      "symbol": "ETCUSD",
+      "contract_type": "Quanto",
+      "contract_price": 100.0,
+      "contract_price_currency": "ETC"
+    },
+    {
+      "ticker_id": "BCH-USD",
+      "symbol": "BCHUSD",
+      "contract_type": "Quanto",
+      "contract_price": 100.0,
+      "contract_price_currency": "BCH"
+    },
+    {
+      "ticker_id": "ZEC-USD",
+      "symbol": "ZECUSD",
+      "contract_type": "Quanto",
+      "contract_price": 100.0,
+      "contract_price_currency": "ZEC"
+    },
+    {
+      "ticker_id": "ETH-USD",
+      "symbol": "ETHUSD",
+      "contract_type": "Quanto",
+      "contract_price": 100.0,
+      "contract_price_currency": "ETH"
+    },
+    {
+      "ticker_id": "LINK-USD",
+      "symbol": "LNKUSD",
+      "contract_type": "Quanto",
+      "contract_price": 100.0,
+      "contract_price_currency": "LINK"
+    },
+    {
+      "ticker_id": "WAV-USD",
+      "symbol": "WAVUSD",
+      "contract_type": "Quanto",
+      "contract_price": 1000.0,
+      "contract_price_currency": "WAV"
+    },
+    {
+      "ticker_id": "LTC-USD",
+      "symbol": "LTCUSD",
+      "contract_type": "Quanto",
+      "contract_price": 100.0,
+      "contract_price_currency": "LTC"
+    },
+    {
+      "ticker_id": "YFI-USD",
+      "symbol": "YFIUSD",
+      "contract_type": "Quanto",
+      "contract_price": 10.0,
+      "contract_price_currency": "YFI"
+    },
+    {
+      "ticker_id": "NEO-USD",
+      "symbol": "NEOUSD",
+      "contract_type": "Quanto",
+      "contract_price": 100.0,
+      "contract_price_currency": "NEO"
+    },
+    {
+      "ticker_id": "DOT-USD",
+      "symbol": "DOTUSD",
+      "contract_type": "Quanto",
+      "contract_price": 1000.0,
+      "contract_price_currency": "DOT"
+    },
+    {
+      "ticker_id": "BTC-USD",
+      "symbol": "BTCUSD",
+      "contract_type": "Quanto",
+      "contract_price": 1.0,
+      "contract_price_currency": "BTC"
+    },
+    {
+      "ticker_id": "BNB-USD",
+      "symbol": "BNBUSD",
+      "contract_type": "Quanto",
+      "contract_price": 100.0,
+      "contract_price_currency": "BNB"
+    },
+    {
+      "ticker_id": "DASH-USD",
+      "symbol": "DASUSD",
+      "contract_type": "Quanto",
+      "contract_price": 100.0,
+      "contract_price_currency": "DASH"
+    },
+    {
+      "ticker_id": "APE-USD",
+      "symbol": "APEUSD",
+      "contract_type": "Quanto",
+      "contract_price": 1000.0,
+      "contract_price_currency": "APE"
+    },
+    {
+      "ticker_id": "XTZ-USD",
+      "symbol": "XTZUSD",
+      "contract_type": "Quanto",
+      "contract_price": 1000.0,
+      "contract_price_currency": "XTZ"
+    },
+    {
+      "ticker_id": "XMR-USD",
+      "symbol": "XMRUSD",
+      "contract_type": "Quanto",
+      "contract_price": 100.0,
+      "contract_price_currency": "XMR"
+    }
+  ]
+}
