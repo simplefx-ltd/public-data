@@ -83,7 +83,7 @@ externalDocs:
   description: Find out more about Simplefx
   url: https://simplefx.com/features/
 servers:
-  - url: /api
+  - url: api
     description: local sandbox data
   - url: https://rest.simplefx.com/api
     description: production public data
